@@ -6,6 +6,7 @@ try {
     const res= await axios.get('http://localhost:2000/posts')
     dispatch({type: GET_ALL, payload: res})
     console.log(res)
+    console.log("here")
 } catch (error) {
     console.log(error)
     

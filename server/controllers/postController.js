@@ -51,9 +51,9 @@ const updatePost= async(req, res)=>{
 const deletePost= async(req, res)=>{
     const id= req.params.id;
     try {
-        const deletedpost= await PostMessage.findByIdAndRemove(id)
+        const deletedPost= await PostMessage.findByIdAndRemove(id)
         const postMessage= await PostMessage.find();
-        res.status(200).json({message: "deleted successfully",deletedpost, postMessage})
+        res.status(200).json({message: "deleted successfully", postMessage})
     } catch (error) {
         res.status(400).json({message: "failed to delete"})
     }

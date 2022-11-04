@@ -1,15 +1,16 @@
-import {GET_ALL, CREATE} from '../types'
-
+import { GET_ALL, CREATE, DELETE} from "../types";
 
 const initState = { posts: [] };
 const postsReducer = (posts = initState, action) => {
   switch (action.type) {
     case GET_ALL:
-      return action.payload
-      
+      return action.payload;
 
-    case   CREATE:
-      return [...posts, action.payload ];
+    case CREATE:
+      return [{...posts, posts: action.payload}];
+
+     case DELETE:
+      return [ ...posts, action.payload];
 
     default:
       return posts;
@@ -17,4 +18,3 @@ const postsReducer = (posts = initState, action) => {
 };
 
 export default postsReducer;
-

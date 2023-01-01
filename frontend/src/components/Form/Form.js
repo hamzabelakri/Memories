@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useStyles from "./styles";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
@@ -31,11 +31,9 @@ function Form() {
       tags: "",
       selectedFile: "",
     });
+  };
 
-/*     console.log(postData);
- */  };
-
-  const onDone = (base64) => {
+  const onDone = ({ base64 }) => {
     setPostData({ ...postData, selectedFile: base64 });
   };
 

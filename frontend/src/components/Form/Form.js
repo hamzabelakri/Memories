@@ -43,6 +43,15 @@ function Form() {
   const onDone = ({ base64 }) => {
     setPostData({ ...postData, selectedFile: base64 });
   };
+  const onClear = (event) => {
+    setPostData({
+      creator: "",
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    });
+  };
 
   return (
     <Paper className={classes.paper}>
@@ -100,7 +109,13 @@ function Form() {
         >
           Submit
         </Button>
-        <Button variant="contained" color="secondary" size="small" fullWidth>
+        <Button
+          variant="contained"
+          color="secondary"
+          size="small"
+          onClick={onClear}
+          fullWidth
+        >
           Clear
         </Button>
       </form>

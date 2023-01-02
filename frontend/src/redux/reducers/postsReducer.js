@@ -1,4 +1,4 @@
-import { GET_ALL, CREATE } from "../types";
+import { GET_ALL, CREATE, UPDATE, LIKE } from "../types";
 
 const initState = { posts: [] };
 const postsReducer = (state = initState, action) => {
@@ -8,7 +8,10 @@ const postsReducer = (state = initState, action) => {
 
     case CREATE:
       return {...state, posts: action.payload};
-
+      case UPDATE:
+        return {...state, posts: action.payload};
+        case LIKE:
+          return {...state, posts: action.payload};
     default:
       return state;
   }

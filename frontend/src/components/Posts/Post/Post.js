@@ -14,7 +14,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
 
 import { useDispatch, useSelector } from "react-redux";
-import { deletePost } from "../../../redux/actions/postsAction";
+import { deletePost, updateLike } from "../../../redux/actions/postsAction";
 
 function Post({ post }) {
   const classes = useStyles();
@@ -24,6 +24,14 @@ function Post({ post }) {
     if (window.confirm("Are you sure") == true) {
       dispatch(deletePost(post._id));
     }
+  };
+
+  const handleUpdate = (event) => {
+    alert(post._id);
+  };
+
+  const handleLike = (event) => {
+    dispatch(updateLike(post._id));
   };
 
   return (
@@ -37,15 +45,13 @@ function Post({ post }) {
       </div>
       <div className={classes.overlay2}>
         <Button style={{ color: "white" }} size="small">
-          <MoreHorizIcon fontSize="default" />
+          <MoreHorizIcon fontSize="default" onClick={handleUpdate} />
         </Button>
       </div>
       <div className={classes.details}>
-        <Typography
-          variant="body2"
-          color="textSecondary"
-          component="h2"
-        ></Typography>
+        <Typography variant="body2" color="textSecondary" component="h2">
+          {post.tags.map((tag) => `#${tag} `)}
+        </Typography>
       </div>
       <Typography
         className={classes.title}
@@ -61,8 +67,8 @@ function Post({ post }) {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary">
-          <ThumbUpAltIcon fontSize="small" /> Like{" "}
+        <Button size="small" color="primary" onClick={handleLike}>
+          <ThumbUpAltIcon fontSize="small" /> &nbsp;Like&nbsp;{post.likeCount} 
         </Button>
         <Button size="small" color="primary" onClick={handleClick}>
           <DeleteIcon fontSize="small" /> Delete

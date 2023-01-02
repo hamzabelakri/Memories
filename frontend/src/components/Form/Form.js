@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useStyles from "./styles";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
 
-import { createPost } from "../../redux/actions/postsAction";
+import { createPost, updatePost } from "../../redux/actions/postsAction";
 
 function Form() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { posts } = useSelector((state) => state.postsReducer);
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -20,6 +21,12 @@ function Form() {
   const onChange = (event) => {
     setPostData({ ...postData, [event.target.name]: event.target.value });
   };
+  const handleTag = (event) => {
+    setPostData({ ...postData, tags: event.target.value.split(",") });
+  };
+  /*   useEffect(() => {
+    if (posts) setPostData(posts);
+  }, [posts]); */
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -78,7 +85,7 @@ function Form() {
           label="Tags (coma separated)"
           fullWidth
           value={postData.tags}
-          onChange={onChange}
+          onChange={handleTag}
         />
         <div className={classes.fileInput}>
           <FileBase type="file" multiple={false} onDone={onDone} />

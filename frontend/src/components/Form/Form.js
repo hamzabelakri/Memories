@@ -31,13 +31,7 @@ function Form() {
   const onSubmit = (event) => {
     event.preventDefault();
     dispatch(createPost(postData));
-    setPostData({
-      creator: "",
-      title: "",
-      message: "",
-      tags: "",
-      selectedFile: "",
-    });
+    onClear();
   };
 
   const onDone = ({ base64 }) => {

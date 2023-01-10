@@ -15,7 +15,7 @@ function Posts() {
 
     useEffect(() => {
       dispatch(getPosts())
-    }, [dispatch])
+    }, [state])
 
    
 

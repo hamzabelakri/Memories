@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ALL, CREATE, UPDATE, LIKE, DELETE } from "../types";
+import { GET_ALL, CREATE, UPDATE, LIKE, DELETE, SELECT_POST } from "../types";
 
 export const getPosts = () => async (dispatch) => {
   try {
@@ -52,3 +52,12 @@ export const deletePost = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const selectPost = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: SELECT_POST, payload: id });
+    console.log(id);
+  } catch (error) {
+    
+  }
+}

@@ -9,7 +9,9 @@ import { createPost, updatePost } from "../../redux/actions/postsAction";
 function Form() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { posts } = useSelector((state) => state.postsReducer);
+
+  const {selectedPostId} = useSelector((state) => state.postsIdReducer);
+
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -24,9 +26,7 @@ function Form() {
   const handleTag = (event) => {
     setPostData({ ...postData, tags: event.target.value.split(",") });
   };
-  /*   useEffect(() => {
-    if (posts) setPostData(posts);
-  }, [posts]); */
+
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -55,7 +55,7 @@ function Form() {
         className={`${classes.root} ${classes.form}`}
         onSubmit={onSubmit}
       >
-        <Typography variant="h6">Creating a Memory</Typography>
+        <Typography variant="h6">{selectedPostId? <p>Editing the Memory</p> : <p>Creating a Memory</p>}</Typography>
         <TextField
           name="creator"
           variant="outlined"

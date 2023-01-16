@@ -14,7 +14,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
 
 import { useDispatch, useSelector } from "react-redux";
-import { deletePost, updateLike } from "../../../redux/actions/postsAction";
+import { deletePost, updateLike, selectPost } from "../../../redux/actions/postsAction";
 
 function Post({ post }) {
   const classes = useStyles();
@@ -26,9 +26,10 @@ function Post({ post }) {
     }
   };
 
-  const handleUpdate = (event) => {
-    alert(post._id);
-  };
+  const handleSelect = (event) => {
+    dispatch(selectPost(post._id));
+   
+}
 
   const handleLike = (event) => {
     dispatch(updateLike(post._id));
@@ -45,7 +46,7 @@ function Post({ post }) {
       </div>
       <div className={classes.overlay2}>
         <Button style={{ color: "white" }} size="small">
-          <MoreHorizIcon fontSize="default" onClick={handleUpdate} />
+          <MoreHorizIcon fontSize="default" onClick={handleSelect} />
         </Button>
       </div>
       <div className={classes.details}>

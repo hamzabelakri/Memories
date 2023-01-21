@@ -3,7 +3,7 @@ import { GET_ALL, CREATE, UPDATE, LIKE, DELETE, SELECT_POST } from "../types";
 
 export const getPosts = () => async (dispatch) => {
   try {
-    const res = await axios.get("http://localhost:2000/posts");
+    const res = await axios.get("https://memories-qinw.onrender.com/posts");
     dispatch({ type: GET_ALL, payload: res });
   } catch (error) {
     console.log(error);
@@ -12,7 +12,7 @@ export const getPosts = () => async (dispatch) => {
 
 export const createPost = (postData) => async (dispatch) => {
   try {
-    const res = await axios.post("http://localhost:2000/posts", postData);
+    const res = await axios.post("https://memories-qinw.onrender.com/posts", postData);
     dispatch({ type: CREATE, payload: res.data });
 
     console.log(res.data);
@@ -23,7 +23,7 @@ export const createPost = (postData) => async (dispatch) => {
 
 export const updatePost = (id, postData) => async (dispatch) => {
   try {
-    const res = await axios.post("http://localhost:2000/posts", postData);
+    const res = await axios.post("https://memories-qinw.onrender.com/posts", postData);
     dispatch({ type: UPDATE, payload: res.data });
 
     console.log(res.data);
@@ -34,7 +34,7 @@ export const updatePost = (id, postData) => async (dispatch) => {
 
 export const updateLike = (id) => async (dispatch) => {
   try {
-    const res = await axios.patch(`http://localhost:2000/posts/${id}/likePost`);
+    const res = await axios.patch(`https://memories-qinw.onrender.com/posts/${id}/likePost`);
     dispatch({ type: LIKE, payload: res.data });
 
     console.log(res.data);
@@ -45,7 +45,7 @@ export const updateLike = (id) => async (dispatch) => {
 
 export const deletePost = (id) => async (dispatch) => {
   try {
-    const res = await axios.delete(`http://localhost:2000/posts/${id}`);
+    const res = await axios.delete(`https://memories-qinw.onrender.com/posts/${id}`);
     dispatch({ type: DELETE, payload: res });
     console.log(res.data);
   } catch (error) {

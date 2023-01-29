@@ -24,7 +24,7 @@ function Posts() {
       alignItems="stretch"
       spacing={3}
     >
-      {state.data.map((post) => (
+      {state.data.reverse().map((post) => (
         <Grid key={post._id} item xs={12} sm={6} md={6}>
           <Post post={post} />
         </Grid>

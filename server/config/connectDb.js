@@ -8,3 +8,5 @@ const connectDb=async()=>{
         console.log("failed to connect to BD")
     }
 }
+
+module.exports =connectDb

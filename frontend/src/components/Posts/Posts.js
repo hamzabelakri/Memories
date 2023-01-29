@@ -4,6 +4,7 @@ import useStyles from "./styles";
 import { getPosts } from "../../redux/actions/postsAction";
 import { Grid, CircularProgress } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
+import { toast, Toaster } from "react-hot-toast";
 
 function Posts() {
   const classes = useStyles();
@@ -29,6 +30,7 @@ function Posts() {
           <Post post={post} />
         </Grid>
       ))}
+      <Toaster position="top-center" reverseOrder={false} />
     </Grid>
   );
 }

@@ -2,5 +2,10 @@ A Full Stack MERN application called "Memories". It is a simple social media app
 
 This project was built using React, Material-UI, Node.js, Express & MongoDB.
 
+## Deployment
+
+The backend is deployed on Render and the frontend on Netlify
+
+The project's website: https://lovelymemories.netlify.app/
 
 
